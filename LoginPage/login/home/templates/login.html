@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+    crossorigin="anonymous"
+  />
+  </head>
+  <body>
+    <section class="vh-100">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6 text-black">
+    
+            <div class="px-5 ms-xl-4">
+              <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style="color: #709085;"></i>
+              <span class="h1 fw-bold mb-0"><img class='image-fluid' height="40%"
+                 width="30%" src="https://img.freepik.com/premium-vector/garage-service-logo-template_578520-3.jpg" alt=""></span>
+            </div>
+    
+            <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+    
+              <form action="{% url 'login_user' %}" method="POST"  style="width: 23rem;">
+                {% csrf_token %}
+    
+                <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Log in</h3>
+    
+                <div class="form-outline mb-4">
+                  <input type="text" name="username" id="form2Example18" class="form-control form-control-lg" required />
+                  <label class="form-label" for="form2Example18">username</label>
+                </div>
+    
+                <div class="form-outline mb-4">
+                  <input type="password" name="password" id="form2Example28" class="form-control form-control-lg"  required/>
+                  <label class="form-label" for="form2Example28">Password</label>
+                </div>
+    
+                <div class="pt-1 mb-4">
+                  <button class="btn btn-success btn-lg btn-block" type="submit">Login</button>
+                </div>
+    
+                
+                <p>Don't have an account? <a href="{% url 'register' %}" class="link-success">Register here</a></p>
+                <div class="form-group">
+                  {% if a%}
+                  {% for messages in messages %}
+                  <div class="alert alter-danger" role="alert">
+                  {{message}}
+                  </div>
+                  {% endfor %}
+                  {% endif%}
+                </div>
+              </form>
+              
+            </div>
+    
+          </div>
+          <div class="col-sm-6 px-0 d-none d-sm-block">
+            <img src="https://project1320.com/wp-content/uploads/2018/07/Car-customization-shop-1024x682.jpg"
+              alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+
+
+

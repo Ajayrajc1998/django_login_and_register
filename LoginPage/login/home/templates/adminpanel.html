@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Admin Panel{% endblock  %}
+{% block content %}
+<div class='container my-5 p-5'>
+  <form class="my-4" action="{% url 'search' %}">
+    <div class="input-group  mb-3">
+      <input type="search" name="search" class="form-control " placeholder="Search username">
+      <button class="btn btn-success " type="submit" id="button-addon2">Search</button>
+    </div>
+</form>
+<table class="table bg-success bg-gradient text-center text-white table-sm">
+    <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Username</th>
+          <th scope="col">Name</th>
+          <th scope='col'>Email</th>
+          <th scop='col'>Actions </th>
+        </tr>
+      </thead>
+      {% for i in allusers%}
+      <tbody>
+        <tr>
+          <td>{{i.id}}</td>
+          <td>{{i.username}}</td>
+          <td>{{i.first_name}}&nbsp;{{i.last_name}}</td>
+          <td>{{i.email}}</td>
+          {% if not i.is_superuser%}
+          {% comment %} <a href="{% url 'updateuser' u.id %}" class="text-center mx-2 btn btn-success btn-sm">Update</a> 
+                                            {% endcomment %}
+          <td>
+          <form class="d-inline" action="{% url 'DeleteUser' i.id %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger btn-sm rounded-pill" value ="Delete">
+          </form>
+          <a href="{% url 'useredit' i.id %}" class="text-center text-white btn btn-warning btn-sm rounded-pill">Update</a>
+        </td>
+          {% else %}
+          <td><h6 class='text-danger'>superuser</h6></td>
+          {% endif %}
+        </tr>
+      </tbody>
+      {% endfor%}
+  </table>
+  <div class='container'>
+    <a class='btn btn-info rounded-pill btn-sm text-white' href="{% url 'adminregister' %}">Create User</a>
+
+    <div class="form-group my-3">
+      {% for message in messages %}
+      <div class="alert alert-success" role="alert">
+      {{message}}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  
+</div>
+{% endblock  %}

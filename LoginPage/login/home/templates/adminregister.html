@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block title %}
+    Admin Register
+{% endblock  %}
+
+{% block content %}
+<section style="background-image: url('https://wallpapers.com/images/featured/c8ly33i3efcgf7x2.jpg');" class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-lg-9 col-xl-7">
+          <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+              <form action="{% url 'adminregister' %}" method='POST' class="">
+                {% csrf_token %}
+                <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input name="first_name" type="text" class="form-control" id="" required />
+                        <label class="form-label" for="form3Example1">First name</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input name="last_name" type="text" class="form-control" id="" required />
+                        <label class="form-label" for="form3Example2">Last name</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input name="email" type="email" class="form-control" id="inputEmail4" required />
+                        <label class="form-label" for="form3Example1">Email</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input name="username" type="text" class="form-control" id="inputEmail4" required />
+                        <label class="form-label" for="form3Example2">UserName</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row mb-4">
+                    <div class="col">
+                      <div class="form-outline">
+                        <input  name="password" type="password" class="form-control" id="inputPassword4"  required />
+                        <label class="form-label" for="form3Example1">Password</label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-outline">
+                        <input name="confirm_password" type="password" class="form-control" id="inputPassword4" required />
+                        <label class="form-label" for="form3Example2">Confirm Password</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 my-3">
+                    <button type="submit" class="btn btn-success btn-large rounded-pill">Register</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        {% for message in messages %}
+        <div class="alert alert-danger" role="alert">
+        {{message}}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock  %}

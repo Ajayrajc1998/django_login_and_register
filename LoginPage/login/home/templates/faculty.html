@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+{% block title %}Faculty{% endblock %} 
+{% block content %}
+<div class='container text-center bg-white '>
+{% for d in facu %}
+{% comment %} <div class="container text-center bg-success ">
+  <div class="card text-center mx-3 my-3 " style="width: 18rem; display:inline-block" >
+    <img src="{{d.f_image.url}}" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{d.f_name}}</h5>
+      <p class="card-text">{{d.f_post}}</p>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+<div class="card text-center mx-3 my-5" style="width: 18rem; display:inline-block">
+  <img src="{{d.f_image.url}}" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{d.f_name}}</h5>
+    <p class="card-text">{{d.f_post}}</p>
+  </div>
+</div>
+
+{% endfor %}
+</div>
+<div class="container text-center">
+  <div class="alert alert-info mt-5 MB-5 bg-success text-white" role="alert">
+      <h4>OUR FACULTIES ARE THE BEST</h3>
+     </div>
+    </div>    
+
+
+{% endblock %}

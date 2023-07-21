@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Our Services{% endblock  %}
+{% block content %}
+<h1 class='text-success'>Our Engineer's</h1>
+<hr>
+{% for d in service  %}
+<div class='mx-auto w-50 bg-success text-center text-white p-3 my-3 border-warning rounded' >
+  <h1>{{d.s_name}}</h1>
+  <h4 class='text-left'>{{d.s_info}}</h4>
+</div>
+{% endfor %}
+
+{% endblock  %}
